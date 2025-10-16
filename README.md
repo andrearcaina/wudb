@@ -2,7 +2,7 @@
 
 simple lightweight in-memory key-value store built in Go
 
-testing basic features rn (no persistence, basic REST API)
+testing basic features rn (basic REST API and persistence)
 
 ```bash
 > curl -X POST -d '{"key": "name", "value": "John"}' http://localhost:8080/set
@@ -17,7 +17,7 @@ testing basic features rn (no persistence, basic REST API)
 
 ### todo:
 no particular order 
-- [ ] persistence
+- [X] persistence
 - [ ] advanced querying
 - [ ] ACID compliance
 - [ ] distributed support (use raft consensus algorithm)

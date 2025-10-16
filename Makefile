@@ -6,7 +6,7 @@ help:
 	echo "test"
 
 build:
-	go build -o bin/main main.go
+	go build -o bin/main .
 
 run:
-	./bin/main
+	./bin/main $(ARGS)
