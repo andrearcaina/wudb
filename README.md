@@ -1,23 +1,18 @@
 ## wuDB
 
-simple lightweight in-memory key-value store built in Go
+Simple lightweight in-memory key-value store built in Go
 
-testing basic features rn (basic REST API and persistence)
+### Documentation
 
-```bash
-> curl -X POST -d '{"key": "name", "value": "John"}' http://localhost:8080/set
-# {"key":"name","value":"John"}
-> curl http://localhost:8080/get/name
-# {"value":"John"}
-> curl -X DELETE http://localhost:8080/del/name
-# no response (204 No Content)
-> curl http://localhost:8080/get/name
-# key not found
-```
+| Markdown File                      | Description                                    |
+|------------------------------------|------------------------------------------------|
+| [HTTP REST API](docs/http.md)      | Simple REST API implementation + example usage |
+| [Key Value Store](docs/kvstore.md) | Key Value store concepts and ideas             |
+| [Persistence](docs/persistence.md) | Persistence implementations + example usage    |
 
-### todo:
-no particular order 
-- [X] persistence
-- [ ] advanced querying
+### TODO
+In no particular order 
+- [X] Persistence
+- [ ] Advanced querying
 - [ ] ACID compliance
-- [ ] distributed support (use raft consensus algorithm)
+- [ ] Distributed support (use raft consensus algorithm)

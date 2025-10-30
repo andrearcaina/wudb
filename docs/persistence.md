@@ -19,3 +19,43 @@ The AOF method works by logging every write operation received by the server. Th
 
 ## Next Steps
 I plan to implement the RDB method too in the future, as I already made the AOF method.
+
+## Example Usage
+
+To run the server with AOF persistence enabled, you can use the following command:
+
+```bash
+> ./bin/main -a -p test.aof
+2025/10/30 18:58:52 AOF file is empty, starting with empty database
+Starting server on :8080
+2025/10/30 18:58:58 "POST http://localhost:8080/set HTTP/1.1" from [::1]:34906 - 201 30B in 3.709444ms
+2025/10/30 18:59:01 "GET http://localhost:8080/get/name HTTP/1.1" from [::1]:33502 - 200 17B in 30.802µs
+^C2025/10/30 18:59:03 Shutting down server...
+```
+
+You can see that the AOF file is created (because it was empty/nonexistent), and then the user sends a POST request to set a key-value pair, and then a GET request to retrieve the value.
+
+The AOF file (`test.aof`) will contain the logged operations:
+
+```
+{"operation":"SET","key":"name","value":"John"}
+```
+
+When running the server again with the same AOF file, the data is loaded from the file, and the user can retrieve the previously set value, and even delete it.
+
+```bash
+> ./bin/main -a -p test.aof
+2025/10/30 19:02:36 Loaded 1 operations from AOF file
+Starting server on :8080
+2025/10/30 19:02:38 "POST http://localhost:8080/set HTTP/1.1" from [::1]:49596 - 201 30B in 3.15874ms
+2025/10/30 19:02:44 "DELETE http://localhost:8080/del/name HTTP/1.1" from [::1]:49598 - 204 0B in 3.002684ms
+2025/10/30 19:02:47 "GET http://localhost:8080/get/name HTTP/1.1" from [::1]:41848 - 404 14B in 26.681µs
+^C2025/10/30 19:02:51 Shutting down server...
+```
+
+Then, the AOF file (`test.aof`) will be updated to reflect the delete operation:
+
+```
+{"operation":"SET","key":"name","value":"John"}
+{"operation":"DEL","key":"name"}
+```

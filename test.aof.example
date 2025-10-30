@@ -1,0 +1,2 @@
+{"operation":"SET","key":"name","value":"John"}
+{"operation":"DEL","key":"name"}
