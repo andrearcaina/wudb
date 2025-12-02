@@ -15,4 +15,4 @@ In no particular order
 - [X] Persistence
 - [ ] Advanced querying
 - [ ] ACID compliance
-- [ ] Distributed support (use raft consensus algorithm)
+- [ ] Use a different protocol instead of REST for API
