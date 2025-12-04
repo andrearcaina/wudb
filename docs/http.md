@@ -18,4 +18,4 @@ Basic operations include:
 # key not found
 ```
 
-Later on, I plan to use the RAFT consensus algorithm to make the key-value store distributed across multiple nodes, meaning I won't be doing a REST API but rather a custom protocol for inter-node communication.
+Later on, I plan to use a different protocol, maybe similar to how Redis works.
