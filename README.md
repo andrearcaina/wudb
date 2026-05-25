@@ -2,6 +2,8 @@
 
 Simple lightweight in-memory key-value store built in Go
 
+Made a distributed version with BadgerDB [here](https://github.com/andrearcaina/hyperion)
+
 ### Documentation
 
 | Markdown File                      | Description                                    |
